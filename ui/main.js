@@ -15,3 +15,4 @@ img.onClick = function () {
     var interval = setInterval(moveRight , 100);
    
 };
+console.log('Hi ankur pandey');
