@@ -15,7 +15,7 @@ function myFunction() {
 var button = document.getElementById('counter');
 var counter = 0;
 
-function b1() {
+button.onClick = function () {
    //Make a request to counter endpoint
    
    //Capture the response and store it in a variable
@@ -25,5 +25,5 @@ function b1() {
    var span = document.getElementById('count'); 
    span.innerHTML = counter.toString();
    
-}
+};
 
