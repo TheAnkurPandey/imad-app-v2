@@ -48,7 +48,7 @@ function b1() {
 //Submt name
 var nameInput = document.getElementById('name');
 var name = nameInput.value;
-var submit = document.getElemntById('submit_btn');
+var submit = document.getElementById('submit_btn');
 function  s1() {
     //Make a request to the server and send the name
     
