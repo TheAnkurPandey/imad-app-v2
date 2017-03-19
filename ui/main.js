@@ -46,8 +46,6 @@ function b1() {
 
 
 //Submt name
-var nameInput = document.getElementById('name');
-var name = nameInput.value;
 var submit = document.getElementById('submit_btn');
 function  s1() {
     //Make a request to the server and send the name
@@ -76,6 +74,8 @@ function  s1() {
    };
    
    //Make the request 
+   var nameInput = document.getElementById('name');
+   var name = nameInput.value;
    request.open('GET', 'http://theankurpandey.imad.hasura-app.io/submit-name?name=' + name , true);
    request.send(null);
     
