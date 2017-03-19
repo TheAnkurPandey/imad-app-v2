@@ -39,8 +39,8 @@ function b1() {
    span.innerHTML = counter.toString();*/
    
    //Make the request 
-   httpRequest.open('GET', 'http://theankurpandey.imad.hasura-app.io/counter' , true);
-   httpRequest.send(null);
+   request.open('GET', 'http://theankurpandey.imad.hasura-app.io/counter' , true);
+   request.send(null);
    
 }
 
