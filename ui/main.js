@@ -11,8 +11,7 @@ function moveRight () {
     marginLeft = marginLeft + 10;
     document.getElementById('madi').style.marginLeft = marginLeft + 'px';
 }
-document.getElementById('madi').onClick = function () {
+function myFunction() {
     var interval = setInterval(moveRight , 100);
-   
-};
+}
 console.log('Hi ankur pandey');
