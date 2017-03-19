@@ -13,17 +13,34 @@ function myFunction() {
 
 //counter code
 var button = document.getElementById('counter');
-var counter = 0;
+//var counter = 0;
 
 function b1() {
-   //Make a request to counter endpoint
+   //Create a request object
+   var request = new XMLHttpRequest();
    
    //Capture the response and store it in a variable
+   request.onreadystatechange = function (){
+       if (request.readyState === XMLHttpRequest.DONE) {
+            // everything is good, the response is received
+            if (httpRequest.status === 200) {
+            // perfect!
+                var counter = request.responseText;
+                var span = document.getElementById('count'); 
+                span.innerHTML = counter.toString();
+            }
+       } 
+       //not done yet
+   };
    
    //Render the variable in correct span
-   counter = counter + 1;
+   /*counter = counter + 1;
    var span = document.getElementById('count'); 
-   span.innerHTML = counter.toString();
+   span.innerHTML = counter.toString();*/
    
-};
+   //Make the request 
+   httpRequest.open('GET', 'http://theankurpandey.imad.hasura-app.io/counter' , true);
+   httpRequest.send(null);
+   
+}
 
