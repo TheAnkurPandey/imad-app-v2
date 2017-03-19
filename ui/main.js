@@ -1,5 +1,11 @@
 console.log('Loaded!');
 
-//change
+//change the text of main-text div
 var element = document.getElementById("main-text");
 element.innerHTML = "HI Ankur Pandey";
+
+//move the image
+var img = document.getElementById("madi");
+img.onClick = function(){
+    img.style.marginLeft = '100px';
+};
