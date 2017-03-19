@@ -22,7 +22,7 @@ function b1() {
    //Render the variable in correct span
    counter = counter + 1;
    var span = document .getElementById('count'); 
-   span.innerHTML = counter;
+   span.innerHTML = counter.toString();
    
-}
+};
 
