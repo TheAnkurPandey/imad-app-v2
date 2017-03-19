@@ -23,7 +23,7 @@ function b1() {
    request.onreadystatechange = function (){
        if (request.readyState === XMLHttpRequest.DONE) {
             // everything is good, the response is received
-            if (httpRequest.status === 200) {
+            if (request.status === 200) {
             // perfect!
                 var counter = request.responseText;
                 var span = document.getElementById('count'); 
