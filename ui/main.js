@@ -12,6 +12,7 @@ function myFunction() {
 }
 
 //counter code
+/*
 var button = document.getElementById('counter');
 //var counter = 0;
 
@@ -32,20 +33,20 @@ function b1() {
        } 
        //not done yet
    };
-   
+*/   
    //Render the variable in correct span
    /*counter = counter + 1;
    var span = document.getElementById('count'); 
    span.innerHTML = counter.toString();*/
-   
+/*   
    //Make the request 
    request.open('GET', 'http://theankurpandey.imad.hasura-app.io/counter' , true);
    request.send(null);
    
 }
+*/
 
-
-//Submt name
+//Submt username/password to login
 var submit = document.getElementById('submit_btn');
 function  s1() {
     //Make a request to the server and send the name
@@ -59,7 +60,7 @@ function  s1() {
             // everything is good, the response is received
             if (request.status === 200) {
             //Capture a list of names and render it as a list
-            var names = request.responseText;
+            /*var names = request.responseText;
             names = JSON.parse(names);
             var list = '';
             for(var i = 0 ; i<names.length ; i++){
@@ -67,17 +68,27 @@ function  s1() {
             }
             var ul = document.getElementById('namelist');
             ul.innerHTML = list;
-                
+            */
+            console.log('user logged in');
+            alert('Logged in sucessfully');
+            
+            }else if(request.status === 403){
+                alert('Username/password is incorrect');
+            }else if(request.status === 500){
+                alert('Something went wrong on server');
             }
        } 
        //not done yet
    };
    
    //Make the request 
-   var nameInput = document.getElementById('name');
-   var name = nameInput.value;
-   request.open('GET', 'http://theankurpandey.imad.hasura-app.io/submit-name?name=' + name , true);
-   request.send(null);
+   var username = document.getElementById('username').value;
+   var password = document.getElementById('password').value;
+   console.log(username);
+   console.log(password);
+   request.open('POST', 'http://theankurpandey.imad.hasura-app.io/login' , true);
+   request.setRequestHeader('Content-Type' , 'application/json');
+   request.send(JSON.stringify({username : username , password : password}));
     
     
 }
