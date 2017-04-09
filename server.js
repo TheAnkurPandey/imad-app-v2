@@ -2,8 +2,8 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
-var crypto = require('crypto');
-var bodyParser = require('body-parser');
+//var crypto = require('crypto');
+//var bodyParser = require('body-parser');
 
 
 
@@ -17,8 +17,49 @@ var config = {
 
 var app = express();
 app.use(morgan('combined'));
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
+var articles = {
+         'article-one' : {
+           title: 'Article One | Ankur Pandey',
+           heading: 'Article One | Ankur Pandey',
+           date: 'March 19 , 2017',
+           content:`
+                    <p>
+                        This is the content of first article.This is the content of first article.This is the content of first article.
+                    </p>
+                    <p>
+                        This is the content of first article.This is the content of first article.This is the content of first article.
+                    </p>
+           `
+         },
+         'article-two' : {
+           title: 'Article Two | Ankur Pandey',
+           heading: 'Article Two | Ankur Pandey',
+           date: 'March 19 , 2017',
+           content:`
+                    <p>
+                        This is the content of second article.This is the content of second article.This is the content of second article.
+                    </p>
+                    <p>
+                        This is the content of second article.This is the content of second article.This is the content of second article.
+                    </p>
+           `
+         },
+         'article-three' : {
+           title: 'Article Three | Ankur Pandey',
+           heading: 'Article Three | Ankur Pandey',
+           date: 'March 19 , 2017',
+           content:`
+                    <p>
+                        This is the content of third article.This is the content of third article.This is the content of third article.
+                    </p>
+                    <p>
+                        This is the content of third article.This is the content of third article.This is the content of third article.
+                    </p>
+           `
+         }
+};
 
 
 function createTemplate(data){
@@ -60,7 +101,7 @@ function createTemplate(data){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-
+/*
 function hash(input , salt){
     //how do we create hash
     var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
@@ -123,8 +164,9 @@ app.get('/logout', function (req, res) {
    delete req.session.auth;
    res.send('<html><body>Logged out!<br/><br/><a href="/">Back to home</a></body></html>');
 });
-
+*/
 var pool = new Pool(config);
+/*
 app.get('/get-articles', function (req, res) {
    // make a select request
    // return a response with the results
@@ -147,7 +189,13 @@ app.get('/get-comments/:articleName', function (req, res) {
       }
    });
 });
+*/
 
+var counter = 0;
+app.get('/counter', function (req, res) {
+  counter = counter + 1;
+  res.send(counter.toString());
+});
 
 
 app.get('/submit-name', function (req, res) {
@@ -162,14 +210,14 @@ app.get('/submit-name', function (req, res) {
 
 
 
-/*app.get('/:articleName', function (req, res) {
+app.get('/:articleName', function (req, res) {
   var articleName = req.params.articleName;    
   res.send(createTemplate(articles[articleName]));
-}); */
+});
 
 
 
-app.get('/articles/:articleName', function (req, res) {
+/*app.get('/articles/:articleName', function (req, res) {
   // SELECT * FROM article WHERE title = '\'; DELETE WHERE a = \'asdf'
   pool.query("SELECT * FROM article WHERE title = $1", [req.params.articleName], function (err, result) {
     if (err) {
@@ -183,7 +231,7 @@ app.get('/articles/:articleName', function (req, res) {
         }
     }
   });
-});
+}); */
 
 app.get('/ui/:fileName', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', req.params.fileName));
