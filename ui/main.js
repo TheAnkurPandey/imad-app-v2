@@ -41,9 +41,7 @@ function b1() {
    //Make the request 
    request.open('GET', 'http://theankurpandey.imad.hasura-app.io/counter' , true);
    request.send(null);
-   
 }
-
 
 //Submt name
 var submit = document.getElementById('submit_btn');
@@ -78,10 +76,7 @@ function  s1() {
    var name = nameInput.value;
    request.open('GET', 'http://theankurpandey.imad.hasura-app.io/submit-name?name=' + name , true);
    request.send(null);
-    
-    
 }
-
 
 /*function loadLoginForm () {
     var loginHtml = `
@@ -215,7 +210,6 @@ function loadArticles () {
     request.open('GET', '/get-articles', true);
     request.send(null);
 }
-
 
 // The first thing to do is to check if the user is logged in!
 loadLogin();
